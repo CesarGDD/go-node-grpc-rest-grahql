@@ -1,0 +1,40 @@
+query GetBlogs {
+  getBlogs {
+    id
+    userId
+    content
+    user {
+      username
+    }
+  }
+}
+
+query GetUser($getUserId: Int!) {
+  getUser(id: $getUserId) {
+    id
+    username
+    blogs {
+      id
+      content
+      userId
+    }
+  }
+}
+
+mutation CreateBlog($input: NewBlog!) {
+  createBlog(input: $input) {
+    userId
+    id
+    content
+    user {
+      username
+    }
+  }
+}
+
+mutation CreateUser($input: NewUser!) {
+  createUser(input: $input) {
+    id
+    username
+  }
+}

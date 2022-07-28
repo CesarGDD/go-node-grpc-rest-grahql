@@ -1,0 +1,28 @@
+<form
+  class="flex flex-col bg-slate-800 rounded-lg text-white mt-4 items-center"
+  #createBlogForm="ngForm"
+  (ngSubmit)="onCreateBlog(createBlogForm)"
+>
+  <div class="flex flex-col items-center">
+    <label for="content">Content</label>
+    <textarea
+      class="text-black mx-2 rounded-lg px-2"
+      ngModel
+      name="content"
+      required
+      placeholder="Enter Content"
+      type="text"
+      minlength="1"
+      rows="10"
+      cols="30"
+    ></textarea>
+  </div>
+  <div>
+    <button
+      class="bg-slate-600 p-1 px-2 m-2 rounded-full disabled:opacity-50"
+      [disabled]="!createBlogForm.valid"
+    >
+      Create Blog
+    </button>
+  </div>
+</form>

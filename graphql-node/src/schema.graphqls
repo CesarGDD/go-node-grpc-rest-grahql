@@ -1,0 +1,40 @@
+type Blog {
+  id: Int!
+  userId: Int!
+  content: String!
+  user: User
+}
+
+type User {
+  id: Int!
+  username: String!
+  password: String!
+  blogs: [Blog]
+}
+
+type Query {
+    # User
+  getUser(id: Int!):User!
+  getUsers:[User!]!
+  # Blog
+  getBlog(id: Int!): Blog!
+  getBlogByUserId(userId: Int!): [Blog!]!
+  getBlogs: [Blog!]!
+}
+input NewUser {
+  username: String!
+  password: String!
+}
+
+input NewBlog {
+  userId: Int!
+  content: String!
+}
+
+type Mutation {
+
+  createUser(input: NewUser!): User!
+  deleteUser(id: Int!):User!
+  createBlog(input: NewBlog!):Blog!
+  deleteBlog(id: Int!):Blog!
+}
